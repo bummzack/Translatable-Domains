@@ -7,16 +7,16 @@
  *
  * Usage on live web server:
  * <code>
- * TranslatableDomains::addDomainHandler('mysite.com','en_US');
- * TranslatableDomains::addDomainHandler('mysite.de','de_DE');
- * TranslatableDomains::addDomainHandler('mysite.jp','ja_JP');
+ * TranslatableDomains::add_domain_handler('mysite.com','en_US');
+ * TranslatableDomains::add_domain_handler('mysite.de','de_DE');
+ * TranslatableDomains::add_domain_handler('mysite.jp','ja_JP');
  * </code>
  *
  * Usage on localhost
  * <code>
- * TranslatableDomains::addDomainHandler('localhost-en:8888','en_US');
- * TranslatableDomains::addDomainHandler('localhost-fr:8888','fr_FR');
- * TranslatableDomains::addDomainHandler('localhost:8888','en_US');
+ * TranslatableDomains::add_domain_handler('localhost-en:8888','en_US');
+ * TranslatableDomains::add_domain_handler('localhost-fr:8888','fr_FR');
+ * TranslatableDomains::add_domain_handler('localhost:8888','en_US');
  * </code>
  *
  */

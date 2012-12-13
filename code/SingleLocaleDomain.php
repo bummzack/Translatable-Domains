@@ -8,7 +8,7 @@
  *
  */
 
-class SingleLocaleDomain extends DataObjectDecorator{
+class SingleLocaleDomain extends DataExtension {
 	
 	/**
 	 * ignored_url_segments
@@ -37,9 +37,9 @@ class SingleLocaleDomain extends DataObjectDecorator{
 	 * different than the detected locale of the domain.
 	 *
 	 * 3 Things to be aware of (while developing..  these are all accounted for here):
-	 *		� Intended Locale of the Domain (.fr, .de, .com?)
-	 *		� Page's Locale in the Database
-	 *		� i18n locale that is in the header.
+	 *		Intended Locale of the Domain (.fr, .de, .com?)
+	 *		Page's Locale in the Database
+	 *		i18n locale that is in the header.
 	 *
 	 */
 	 
@@ -48,7 +48,7 @@ class SingleLocaleDomain extends DataObjectDecorator{
 	 
 		if($this->owner->hasExtension('Translatable')){
 			//find the correct locale
-			$curLoc = TranslatableDomains::getLocaleFromHost();
+			$curLoc = TranslatableDomains::get_locale_from_host();
 			// compare page locale vs domain's locale
 			// low occurance of these not matching, but important
 			
@@ -62,7 +62,7 @@ class SingleLocaleDomain extends DataObjectDecorator{
 					Director::redirect($correctPage->Link());
 				} else {
 					//otherwise, find requested page by url, determine locale, and put us in the right domain.
-					$newUrl = TranslatableDomains::convertLocaleToTLD($withEndSlash=false).$this->owner->Link();
+					$newUrl = TranslatableDomains::convert_locale_to_tld($withEndSlash=false).$this->owner->Link();
 					Director::redirect($newUrl);
 				}
 			} else i18n::set_locale($this->owner->Locale);
@@ -79,7 +79,7 @@ class SingleLocaleDomain extends DataObjectDecorator{
 	
 	function alternateAbsoluteLink($action=null) {
 		$segment = ($action) ? "/".$action : '';
-		return TranslatableDomains::convertLocaleToTLD($withEndSlash=false).Director::baseURL().$this->owner->URLSegment.'/'.$segment;
+		return TranslatableDomains::convert_locale_to_tld($withEndSlash=false).Director::baseURL().$this->owner->URLSegment.'/'.$segment;
 	}
 	
 	/**
